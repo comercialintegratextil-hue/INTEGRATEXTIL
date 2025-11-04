@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { Calculator, Eye, TrendingUp, TrendingDown } from 'lucide-react';
+import { Calculator, Eye, TrendingUp, TrendingDown, Search } from 'lucide-react';
 import ProductionOrderCostForm from '@/components/costs/ProductionOrderCostForm';
 
 const ProductionOrderCostsView = () => {
@@ -176,7 +179,22 @@ const ProductionOrderCostsView = () => {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
       <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Costos por Orden de Producción</h3>
+       <div className="flex flex-col sm:flex-row gap-3">
+              <div className="relative flex-1 max-w-sm">
       
+                
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Input
+                  placeholder="Buscar por nombre o referencia..."
+                
+                  className="pl-10"
+                />
+              </div>
+              <Button  variant="outline">
+                
+                Refrescar
+              </Button>
+            </div>
       <div className="rounded-lg border" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
         <Table>
           <TableHeader>

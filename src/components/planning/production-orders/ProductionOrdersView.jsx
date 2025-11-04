@@ -2,12 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
-import { PlusCircle, Edit, Trash2, Eye, FileDown } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, Eye, FileDown, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { ProductionOrderForm } from '@/components/planning/production-orders/ProductionOrderForm';
 import { generatePDF } from '@/components/planning/production-orders/generateProductionOrderPDF';
+
+import { Input } from '@/components/ui/input'; 
+
 
 const ProductionOrdersView = () => {
   const [productionOrders, setProductionOrders] = useState([]);
@@ -96,6 +99,23 @@ const ProductionOrdersView = () => {
         <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>Listado de Órdenes de Producción</h3>
         <Button onClick={handleAddNew} className="bg-blue-500 hover:bg-blue-600 text-white">
           <PlusCircle className="mr-2 h-4 w-4" /> Crear Nueva OP
+        </Button>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1 max-w-sm">
+
+          
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Buscar por nombre o referencia..."
+          
+            className="pl-10"
+          />
+        </div>
+        <Button  variant="outline">
+          
+          Refrescar
         </Button>
       </div>
 

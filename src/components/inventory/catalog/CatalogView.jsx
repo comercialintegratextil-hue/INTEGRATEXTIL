@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
-import { PlusCircle, Edit, Trash2 } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import CatalogItemForm from '@/components/inventory/catalog/CatalogItemForm';
@@ -71,6 +72,23 @@ const CatalogView = () => {
         <h3 className="text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>Catálogo Maestro de Ítems</h3>
         <Button onClick={handleAddNew}>
           <PlusCircle className="mr-2 h-4 w-4" /> Añadir Ítem
+        </Button>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1 max-w-sm">
+
+          
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Buscar por nombre o referencia..."
+          
+            className="pl-10"
+          />
+        </div>
+        <Button  variant="outline">
+          
+          Refrescar
         </Button>
       </div>
 

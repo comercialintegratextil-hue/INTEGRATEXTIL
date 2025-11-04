@@ -167,7 +167,7 @@ export const OperationSheetForm = ({ sheetData, onSuccess, closeModal }) => {
         </div>
       </div>
 
-      <div className="rounded-lg border max-h-96 overflow-y-auto">
+      <div className="rounded-lg border max-h-48 overflow-y-auto">
         <Table>
           <TableHeader>
             <TableRow>

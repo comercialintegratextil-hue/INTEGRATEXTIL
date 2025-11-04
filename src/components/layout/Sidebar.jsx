@@ -35,7 +35,7 @@ const Sidebar = ({
           <motion.div 
             className="logo-container"
             animate={{
-              width: sidebarOpen ? '100%' : '48px',
+              width: sidebarOpen ? '75%' : '48px',
               height: sidebarOpen ? 'auto' : '48px',
               transition: { duration: 0.3 }
             }}

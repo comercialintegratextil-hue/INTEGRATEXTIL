@@ -5,8 +5,11 @@ import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
-import { PlusCircle, Edit, Trash2, Eye } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, Eye, Search } from 'lucide-react';
 import { OperationSheetForm } from '@/components/engineering/OperationSheetForm';
+import { Input } from '@/components/ui/input'; 
+
+
 
 const OperationSheetView = () => {
   const [sheets, setSheets] = useState([]);
@@ -90,6 +93,25 @@ const OperationSheetView = () => {
           <PlusCircle className="mr-2 h-4 w-4" /> Nueva Hoja de Operaciones
         </Button>
       </div>
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="relative flex-1 max-w-sm">
+
+          
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Buscar por nombre o referencia..."
+          
+            className="pl-10"
+          />
+        </div>
+        <Button  variant="outline">
+          
+          Refrescar
+        </Button>
+      </div>
+
+
 
       <div className="p-4 rounded-xl card-shadow" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <Table>

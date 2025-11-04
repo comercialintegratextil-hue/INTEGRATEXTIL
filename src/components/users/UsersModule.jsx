@@ -3,8 +3,8 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
-import { PlusCircle, Edit, Trash2, KeyRound, PowerOff } from 'lucide-react';
-
+import { PlusCircle, Edit, Trash2, KeyRound, PowerOff,Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
   Table,
@@ -146,6 +146,26 @@ const UsersModule = () => {
           <PlusCircle className="mr-2 h-4 w-4" /> Crear Usuario
         </Button>
       </div>
+
+
+      <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="relative flex-1 max-w-sm">
+            
+                      
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <Input
+                        placeholder="Buscar por nombre o referencia..."
+                      
+                        className="pl-10"
+                      />
+                    </div>
+                    <Button  variant="outline">
+                      
+                      Refrescar
+                    </Button>
+                  </div>
+
+      
 
       <div className="rounded-lg border" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
         <Table>

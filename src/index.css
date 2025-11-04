@@ -12,7 +12,7 @@
   --bg-tertiary: #F3F4F6;
   --text-primary: #212121; /* Changed to dark grey */
   --text-secondary: #4B5563;
-  --text-muted: #6B7280;
+  --text-muted: #3c3c3d;
   --border: #E5E7EB;
   --border-accent: #D1D5DB;
   
@@ -131,13 +131,14 @@ body {
 
 .logo-container {
   border-radius: 9999px;
-  padding: 4px;
-  background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 15px 2px rgba(167, 199, 231, 0.3);
+  padding: 0px;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  /* box-shadow: 0 0 0px 0px rgba(167, 199, 231, 0.3); */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: inherit;
+  width: 75%;
 }
 
 [data-theme="light"] .logo-container {

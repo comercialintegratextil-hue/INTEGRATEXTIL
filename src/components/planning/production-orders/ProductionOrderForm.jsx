@@ -140,7 +140,7 @@ export const ProductionOrderForm = ({ productionOrder, onSuccess, closeModal }) 
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" style={{height:'45vw', overflowY:'auto'}}>
       <div className="p-4 border-b space-y-4" style={{ borderColor: 'var(--border)' }}>
         <div className="flex gap-2 items-end">
           <div className="flex-grow">
@@ -189,7 +189,7 @@ export const ProductionOrderForm = ({ productionOrder, onSuccess, closeModal }) 
             <h4 className="font-semibold text-lg">Cantidades por Talla y Color</h4>
             <Button type="button" size="sm" onClick={addItemRow}><PlusCircle className="h-4 w-4 mr-2"/>Añadir Fila</Button>
         </div>
-        <div className="rounded-lg border" style={{ borderColor: 'var(--border)' }}>
+         <div className="rounded-lg border" style={{ borderColor: 'var(--border)', overflowX: 'auto', maxHeight: '320px', overflowY: 'auto' }}>
             <Table>
                 <TableHeader>
                     <TableRow>
