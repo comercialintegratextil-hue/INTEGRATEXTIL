@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host :: --port 3000",
     "build": "vite build",
+    "prebuild": "chmod +x ./node_modules/.bin/* || true",
     "preview": "vite preview --host :: --port 3000"
   },
   "dependencies": {
@@ -26,7 +27,7 @@
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
-    "@supabase/supabase-js": "2.30.0",
+    "@supabase/supabase-js": "^2.30.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^1.0.4",
