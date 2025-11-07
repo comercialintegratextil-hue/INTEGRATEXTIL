@@ -3,7 +3,7 @@ import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { motion, AnimatePresence } from 'framer-motion';
+// Removed framer-motion animations to avoid DOM removal errors during auth state changes
 import { Sun, Moon, LogIn, Mail } from 'lucide-react';
 
 const Auth = () => {
@@ -59,12 +59,9 @@ const Auth = () => {
       </div>
 
       <div className="w-full max-w-md mx-auto overflow-hidden">
-        <motion.div
+        <div
           className="p-8 space-y-8 rounded-2xl card-shadow"
           style={{ backgroundColor: 'var(--bg-secondary)' }}
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <div className="text-center">
             <img alt="IntegraTextil ERP Logo" className="h-16 mx-auto mb-4" src="https://images.unsplash.com/photo-1691405167344-c3bbc9710ad2" />
@@ -76,16 +73,9 @@ const Auth = () => {
             </p>
           </div>
 
-          <AnimatePresence mode="wait">
-            <motion.form
-              key={isLoginView ? 'login' : 'signup'}
+            <form
               onSubmit={handleAuth}
               className="space-y-6"
-              variants={formVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.3 }}
             >
               <div>
                 <Label htmlFor="email">Correo Electrónico</Label>
@@ -127,8 +117,7 @@ const Auth = () => {
                   </>
                 )}
               </Button>
-            </motion.form>
-          </AnimatePresence>
+            </form>
 
           <p className="text-center text-sm" style={{ color: 'var(--text-secondary)' }}>
             {isLoginView ? '¿No tienes una cuenta?' : '¿Ya tienes una cuenta?'}
