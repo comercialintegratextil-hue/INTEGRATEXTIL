@@ -1,6 +1,50 @@
-import { createClient } from '@supabase/supabase-js';
+// Lightweight supabase stub to allow running the app without connecting to Supabase.
+// This implements the minimal API surface used across the app and returns
+// safe defaults (empty arrays / nulls) so the UI doesn't make real network calls.
 
-const supabaseUrl = 'https://mscefsstpxxzdobxoors.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zY2Vmc3N0cHh4emRvYnhvb3JzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU1NTY1ODMsImV4cCI6MjA3MTEzMjU4M30.ZiEuBwiPmojGqJ7bbCG5yJ-BMI76xbe7HZ4_uZ-HuJ4';
+const noopPromise = async (result) => ({ ...(result ?? {}), error: null });
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const queryBuilder = () => {
+	return {
+		select: async () => ({ data: [], error: null }),
+		insert: async () => ({ data: null, error: null }),
+		update: async () => ({ data: null, error: null }),
+		delete: async () => ({ data: null, error: null }),
+		eq: function () { return this; },
+		order: function () { return this; },
+		maybeSingle: async () => ({ data: null, error: null }),
+		single: async () => ({ data: null, error: null }),
+	};
+};
+
+export const supabase = {
+	from: (table) => queryBuilder(),
+	rpc: async (fnName, params) => ({ data: null, error: null }),
+	functions: {
+		// simulate serverless functions
+		invoke: async (name, opts) => ({ data: [], error: null }),
+	},
+	auth: {
+		getSession: async () => {
+			// Try to read a session from localStorage (if running in browser)
+			try {
+				const session = typeof localStorage !== 'undefined' ? JSON.parse(localStorage.getItem('app_session') || 'null') : null;
+				return { data: { session } };
+			} catch (e) {
+				return { data: { session: null } };
+			}
+		},
+		onAuthStateChange: (cb) => {
+			// No realtime auth in stub; return a fake subscription object
+			return { data: { subscription: { unsubscribe: () => {} } } };
+		},
+		signUp: async (opts) => ({ data: null, error: null }),
+		signInWithPassword: async (opts) => ({ data: null, error: null }),
+		signOut: async () => ({ error: null }),
+		resetPasswordForEmail: async (email, opts) => ({ error: null }),
+	},
+	removeChannel: (c) => {},
+	channel: () => ({ subscribe: () => {}, unsubscribe: () => {} }),
+};
+
+export default supabase;
