@@ -14,7 +14,8 @@ export function Toaster() {
 
 	return (
 		<ToastProvider>
-			{toasts.map(({ id, title, description, action, ...props }) => {
+			{toasts.map(({ id, title, description, action, dismiss, update, ...props }) => {
+				// remove function props like dismiss/update so they are not passed to DOM elements
 				return (
 					<Toast key={id} {...props}>
 						<div className="grid gap-1">
