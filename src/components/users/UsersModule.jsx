@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { useToast } from '@/components/ui/use-toast';
-import { motion } from 'framer-motion';
+// removed framer-motion wrapper to avoid DOM removal issues during rapid mount/unmount
 import { PlusCircle, Edit, Trash2, KeyRound, PowerOff,Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -136,7 +136,7 @@ const UsersModule = () => {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+    <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-extrabold" style={{ color: 'var(--text-primary)' }}>Gestión de Usuarios</h1>
@@ -235,7 +235,7 @@ const UsersModule = () => {
           onSuccess={fetchUsers}
           currentUserRole={currentUserProfile.role}
         />
-    </motion.div>
+    </div>
   );
 };
 
