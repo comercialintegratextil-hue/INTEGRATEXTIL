@@ -129,7 +129,7 @@ const Auth = () => {
               {isLoginView ? 'Regístrate' : 'Inicia Sesión'}
             </Button>
           </p>
-        </motion.div>
+  </div>
       </div>
     </div>
   );
