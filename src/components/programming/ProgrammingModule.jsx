@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SlidersHorizontal, GanttChartSquare, Factory, Clock } from 'lucide-react';
 import GanttChart from '@/components/programming/GanttChart';
@@ -8,11 +7,7 @@ import ProcessesStations from '@/components/programming/ProcessesStations';
 
 const ProgrammingModule = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="space-y-6"
-    >
+    <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-extrabold" style={{ color: 'var(--text-primary)' }}>
           Programación de Producción
@@ -41,7 +36,7 @@ const ProgrammingModule = () => {
           <WorkShifts />
         </TabsContent>
       </Tabs>
-    </motion.div>
+    </div>
   );
 };
 
