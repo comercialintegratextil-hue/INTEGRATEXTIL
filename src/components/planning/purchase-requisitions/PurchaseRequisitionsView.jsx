@@ -4,7 +4,7 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { PlusCircle, Edit, Trash2, Eye, FileDown, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input'; 
+import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
@@ -120,16 +120,16 @@ const PurchaseRequisitionsView = () => {
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1 max-w-sm">
 
-          
+
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input
             placeholder="Buscar por nombre o referencia..."
-          
+
             className="pl-10"
           />
         </div>
-        <Button  variant="outline">
-          
+        <Button variant="outline">
+
           Refrescar
         </Button>
       </div>
@@ -175,7 +175,7 @@ const PurchaseRequisitionsView = () => {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-6xl">
+        <DialogContent className="sm:max-w-5xl w-[95vw] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingRequisition ? 'Editar Requerimiento' : 'Crear Nuevo Requerimiento de Compra'}</DialogTitle>
             <DialogDescription>

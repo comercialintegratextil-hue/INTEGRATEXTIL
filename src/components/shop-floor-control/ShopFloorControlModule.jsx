@@ -11,9 +11,9 @@ const ShopFloorControlModule = () => {
   const activeTab = submodule || 'interactive';
 
   const tabs = [
-    { id: 'interactive', label: 'Control Interactivo', icon: LayoutGrid, component: <ShopFloorInteractiveView /> },
-    { id: 'report', label: 'Reporte de Piso', icon: BarChart3, component: <ShopFloorTableView /> },
-    { id: 'progress', label: 'Avance por Proceso', icon: AreaChart, component: <ProductionProgressView /> },
+    { id: 'interactive', label: 'Control Interactivo', icon: LayoutGrid, component: <ShopFloorInteractiveView />, colorClass: 'data-[state=active]:bg-brand-red data-[state=active]:text-white' },
+    { id: 'report', label: 'Reporte de Piso', icon: BarChart3, component: <ShopFloorTableView />, colorClass: 'data-[state=active]:bg-brand-indigo data-[state=active]:text-white' },
+    { id: 'progress', label: 'Avance por Proceso', icon: AreaChart, component: <ProductionProgressView />, colorClass: 'data-[state=active]:bg-brand-green data-[state=active]:text-white' },
   ];
 
   return (
@@ -26,9 +26,9 @@ const ShopFloorControlModule = () => {
       </div>
 
       <Tabs value={activeTab} className="flex flex-col flex-grow">
-        <TabsList className="grid w-full grid-cols-3">
+        <TabsList className="grid w-full grid-cols-3 bg-muted/50 p-1 rounded-full">
           {tabs.map(tab => (
-            <TabsTrigger key={tab.id} value={tab.id} asChild>
+            <TabsTrigger key={tab.id} value={tab.id} className={`${tab.colorClass} transition-all duration-300 rounded-full`} asChild>
               <Link to={`/shop_floor_control/${tab.id}`} className="flex items-center gap-2">
                 <tab.icon className="h-4 w-4" />
                 {tab.label}

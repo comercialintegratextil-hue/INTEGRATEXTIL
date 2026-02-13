@@ -24,11 +24,11 @@ const CostsModule = () => {
       </div>
 
       <Tabs defaultValue="centers" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-          <TabsTrigger value="centers"><Building className="w-4 h-4 mr-2" />Centros de Costo</TabsTrigger>
-          <TabsTrigger value="config"><Wrench className="w-4 h-4 mr-2" />Configuración</TabsTrigger>
-          <TabsTrigger value="orders"><ClipboardList className="w-4 h-4 mr-2" />Costos por OP</TabsTrigger>
-          <TabsTrigger value="reports"><BarChartBig className="w-4 h-4 mr-2" />Reportes</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 bg-muted/50 p-1 rounded-full">
+          <TabsTrigger value="centers" className="rounded-full data-[state=active]:bg-brand-indigo data-[state=active]:text-white transition-all duration-300"><Building className="w-4 h-4 mr-2" />Centros de Costo</TabsTrigger>
+          <TabsTrigger value="config" className="rounded-full data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300"><Wrench className="w-4 h-4 mr-2" />Configuración</TabsTrigger>
+          <TabsTrigger value="orders" className="rounded-full data-[state=active]:bg-brand-green data-[state=active]:text-white transition-all duration-300"><ClipboardList className="w-4 h-4 mr-2" />Costos por OP</TabsTrigger>
+          <TabsTrigger value="reports" className="rounded-full data-[state=active]:bg-brand-red data-[state=active]:text-white transition-all duration-300"><BarChartBig className="w-4 h-4 mr-2" />Reportes</TabsTrigger>
         </TabsList>
         <TabsContent value="centers" className="mt-4">
           <CostCentersView />

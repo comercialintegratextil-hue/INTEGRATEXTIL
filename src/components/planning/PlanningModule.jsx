@@ -47,12 +47,12 @@ const PlanningModule = () => {
       </div>
 
       <Tabs defaultValue="products" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
-          <TabsTrigger value="products"><Package className="w-4 h-4 mr-2" />Productos</TabsTrigger>
-          <TabsTrigger value="tech-sheet"><FileText className="w-4 h-4 mr-2" />Ficha Técnica</TabsTrigger>
-          <TabsTrigger value="materials-explosion"><Layers className="w-4 h-4 mr-2" />Explosión Mat.</TabsTrigger>
-          <TabsTrigger value="purchase-req"><ShoppingCart className="w-4 h-4 mr-2" />Req. Compras</TabsTrigger>
-          <TabsTrigger value="production-order"><ClipboardList className="w-4 h-4 mr-2" />Órdenes Prod.</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 bg-muted/50 p-1 rounded-full">
+          <TabsTrigger value="products" className="rounded-full data-[state=active]:bg-brand-indigo data-[state=active]:text-white transition-all duration-300"><Package className="w-4 h-4 mr-2" />Productos</TabsTrigger>
+          <TabsTrigger value="tech-sheet" className="rounded-full data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300"><FileText className="w-4 h-4 mr-2" />Ficha Técnica</TabsTrigger>
+          <TabsTrigger value="materials-explosion" className="rounded-full data-[state=active]:bg-brand-green data-[state=active]:text-white transition-all duration-300"><Layers className="w-4 h-4 mr-2" />Explosión Mat.</TabsTrigger>
+          <TabsTrigger value="purchase-req" className="rounded-full data-[state=active]:bg-brand-purple data-[state=active]:text-white transition-all duration-300"><ShoppingCart className="w-4 h-4 mr-2" />Req. Compras</TabsTrigger>
+          <TabsTrigger value="production-order" className="rounded-full data-[state=active]:bg-brand-red data-[state=active]:text-white transition-all duration-300"><ClipboardList className="w-4 h-4 mr-2" />Órdenes Prod.</TabsTrigger>
         </TabsList>
         <TabsContent value="products">
           <ProductsView />

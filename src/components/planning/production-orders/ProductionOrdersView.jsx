@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { ProductionOrderForm } from '@/components/planning/production-orders/ProductionOrderForm';
 import { generatePDF } from '@/components/planning/production-orders/generateProductionOrderPDF';
 
-import { Input } from '@/components/ui/input'; 
+import { Input } from '@/components/ui/input';
 
 
 const ProductionOrdersView = () => {
@@ -74,7 +74,7 @@ const ProductionOrdersView = () => {
       }
     }
   };
-  
+
   const handleExportPDF = async (order) => {
     toast({ title: 'Generando PDF...', description: 'Por favor espera.' });
     try {
@@ -87,9 +87,9 @@ const ProductionOrdersView = () => {
 
       generatePDF(order, items, companySettings);
       toast({ title: 'Éxito', description: 'PDF generado y descargado.' });
-    } catch(error) {
-       toast({ variant: 'destructive', title: 'Error', description: 'No se pudo generar el PDF.' });
-       console.error("PDF generation error:", error);
+    } catch (error) {
+      toast({ variant: 'destructive', title: 'Error', description: 'No se pudo generar el PDF.' });
+      console.error("PDF generation error:", error);
     }
   };
 
@@ -105,16 +105,16 @@ const ProductionOrdersView = () => {
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1 max-w-sm">
 
-          
+
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           <Input
             placeholder="Buscar por nombre o referencia..."
-          
+
             className="pl-10"
           />
         </div>
-        <Button  variant="outline">
-          
+        <Button variant="outline">
+
           Refrescar
         </Button>
       </div>
@@ -158,7 +158,7 @@ const ProductionOrdersView = () => {
       </div>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="sm:max-w-4xl">
+        <DialogContent className="sm:max-w-5xl w-[95vw] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingOrder ? 'Editar Orden de Producción' : 'Crear Nueva Orden de Producción'}</DialogTitle>
             <DialogDescription>

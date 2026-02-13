@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, LogIn, Mail } from 'lucide-react';
+import IntegraTextilLogo from '@/components/ui/IntegraTextilLogo';
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
@@ -25,11 +26,11 @@ const Auth = () => {
     }
     setLoading(false);
   };
-  
+
   const toggleTheme = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
-    if(newDarkMode) {
+    if (newDarkMode) {
       document.documentElement.classList.add('dark');
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
@@ -67,7 +68,9 @@ const Auth = () => {
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <div className="text-center">
-            <img alt="IntegraTextil ERP Logo" className="h-16 mx-auto mb-4" src="https://images.unsplash.com/photo-1691405167344-c3bbc9710ad2" />
+            <div className="mb-6 flex justify-center">
+              <IntegraTextilLogo className="h-20 w-auto" />
+            </div>
             <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
               {isLoginView ? 'Bienvenido de Nuevo' : 'Crear una Cuenta'}
             </h1>

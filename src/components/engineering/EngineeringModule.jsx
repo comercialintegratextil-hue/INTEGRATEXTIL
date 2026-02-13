@@ -46,20 +46,20 @@ const EngineeringModule = () => {
       </div>
 
       <Tabs defaultValue="create-operation" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="create-operation"><Sliders className="w-4 h-4 mr-2" />Crear Operación</TabsTrigger>
-          <TabsTrigger value="operation-sheet"><ListChecks className="w-4 h-4 mr-2" />Hoja de Operaciones</TabsTrigger>
-          <TabsTrigger value="module-balancing"><Users className="w-4 h-4 mr-2" />Balanceo de Módulo</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 bg-muted/50 p-1 rounded-full">
+          <TabsTrigger value="create-operation" className="rounded-full data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300"><Sliders className="w-4 h-4 mr-2" />Crear Operación</TabsTrigger>
+          <TabsTrigger value="operation-sheet" className="rounded-full data-[state=active]:bg-brand-red data-[state=active]:text-white transition-all duration-300"><ListChecks className="w-4 h-4 mr-2" />Hoja de Operaciones</TabsTrigger>
+          <TabsTrigger value="module-balancing" className="rounded-full data-[state=active]:bg-brand-purple data-[state=active]:text-white transition-all duration-300"><Users className="w-4 h-4 mr-2" />Balanceo de Módulo</TabsTrigger>
         </TabsList>
 
         <TabsContent value="create-operation">
-            <CreateOperation />
+          <CreateOperation />
         </TabsContent>
         <TabsContent value="operation-sheet">
-            <OperationSheetView />
+          <OperationSheetView />
         </TabsContent>
         <TabsContent value="module-balancing">
-            <ModuleBalancing />
+          <ModuleBalancing />
         </TabsContent>
       </Tabs>
     </motion.div>

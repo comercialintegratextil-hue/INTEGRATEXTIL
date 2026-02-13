@@ -50,6 +50,13 @@ module.exports = {
           DEFAULT: "var(--bg-secondary)",
           foreground: "var(--text-primary)",
         },
+        brand: {
+          orange: "var(--brand-orange)",
+          green: "var(--brand-green)",
+          purple: "var(--brand-purple)",
+          red: "var(--brand-red)",
+          indigo: "var(--brand-indigo)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

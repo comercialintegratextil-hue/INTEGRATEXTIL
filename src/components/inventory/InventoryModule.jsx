@@ -25,12 +25,12 @@ const InventoryModule = () => {
       </div>
 
       <Tabs defaultValue="catalog" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
-          <TabsTrigger value="catalog"><Book className="w-4 h-4 mr-2" />Catálogo</TabsTrigger>
-          <TabsTrigger value="warehouses"><Warehouse className="w-4 h-4 mr-2" />Bodegas</TabsTrigger>
-          <TabsTrigger value="movements"><ArrowRightLeft className="w-4 h-4 mr-2" />Movimientos</TabsTrigger>
-          <TabsTrigger value="assembly"><Combine className="w-4 h-4 mr-2" />Ensamble</TabsTrigger>
-          <TabsTrigger value="reports"><BarChart3 className="w-4 h-4 mr-2" />Reportes</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 bg-muted/50 p-1 rounded-full">
+          <TabsTrigger value="catalog" className="rounded-full data-[state=active]:bg-brand-indigo data-[state=active]:text-white transition-all duration-300"><Book className="w-4 h-4 mr-2" />Catálogo</TabsTrigger>
+          <TabsTrigger value="warehouses" className="rounded-full data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300"><Warehouse className="w-4 h-4 mr-2" />Bodegas</TabsTrigger>
+          <TabsTrigger value="movements" className="rounded-full data-[state=active]:bg-brand-green data-[state=active]:text-white transition-all duration-300"><ArrowRightLeft className="w-4 h-4 mr-2" />Movimientos</TabsTrigger>
+          <TabsTrigger value="assembly" className="rounded-full data-[state=active]:bg-brand-purple data-[state=active]:text-white transition-all duration-300"><Combine className="w-4 h-4 mr-2" />Ensamble</TabsTrigger>
+          <TabsTrigger value="reports" className="rounded-full data-[state=active]:bg-brand-red data-[state=active]:text-white transition-all duration-300"><BarChart3 className="w-4 h-4 mr-2" />Reportes</TabsTrigger>
         </TabsList>
         <TabsContent value="catalog">
           <CatalogView />

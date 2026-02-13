@@ -3,7 +3,7 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import { useToast } from '@/components/ui/use-toast';
 import { motion } from 'framer-motion';
-import { PlusCircle, Edit, Trash2, KeyRound, PowerOff,Search } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, KeyRound, PowerOff, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -35,13 +35,13 @@ const UsersModule = () => {
   const [editingUser, setEditingUser] = useState(null);
   const { toast } = useToast();
   const { profile: currentUserProfile, session } = useAuth();
-  
+
   const ROLES = ['SuperAdministrador', 'Administrador', 'Supervisor', 'Usuario'];
 
   const fetchUsers = useCallback(async () => {
     if (!session) return;
     setLoading(true);
-    
+
     const { data, error } = await supabase.functions.invoke('list-users', {
       headers: {
         'Authorization': `Bearer ${session.access_token}`
@@ -49,17 +49,17 @@ const UsersModule = () => {
     });
 
     if (error) {
-        toast({ variant: "destructive", title: "Error", description: `No se pudieron cargar los usuarios: ${error.message}` });
-        setLoading(false);
-        return;
+      toast({ variant: "destructive", title: "Error", description: `No se pudieron cargar los usuarios: ${error.message}` });
+      setLoading(false);
+      return;
     }
-    
+
     setUsers(data);
     setLoading(false);
   }, [toast, session]);
 
   useEffect(() => {
-    if(currentUserProfile?.role === 'Administrador' || currentUserProfile?.role === 'SuperAdministrador') {
+    if (currentUserProfile?.role === 'Administrador' || currentUserProfile?.role === 'SuperAdministrador') {
       fetchUsers();
     }
   }, [fetchUsers, currentUserProfile]);
@@ -68,7 +68,7 @@ const UsersModule = () => {
     setEditingUser(user);
     setIsFormOpen(true);
   };
-  
+
   const handleAddNew = () => {
     setEditingUser(null);
     setIsFormOpen(true);
@@ -76,12 +76,12 @@ const UsersModule = () => {
 
   const handleDelete = async (userId, userRole) => {
     if (currentUserProfile.role !== 'SuperAdministrador' && userRole === 'Administrador') {
-        toast({ variant: "destructive", title: "Acción no permitida", description: "Los administradores no pueden eliminar a otros administradores." });
-        return;
+      toast({ variant: "destructive", title: "Acción no permitida", description: "Los administradores no pueden eliminar a otros administradores." });
+      return;
     }
     if (userRole === 'SuperAdministrador') {
-        toast({ variant: "destructive", title: "Acción no permitida", description: "No se puede eliminar al SuperAdministrador." });
-        return;
+      toast({ variant: "destructive", title: "Acción no permitida", description: "No se puede eliminar al SuperAdministrador." });
+      return;
     }
 
     const { error } = await supabase.functions.invoke('manage-user', {
@@ -96,18 +96,18 @@ const UsersModule = () => {
       fetchUsers();
     }
   };
-  
+
   const handleDeactivate = async (userId, userRole, currentStatus) => {
     if (userRole === 'SuperAdministrador') {
-        toast({ variant: "destructive", title: "Acción no permitida", description: "No se puede desactivar al SuperAdministrador." });
-        return;
+      toast({ variant: "destructive", title: "Acción no permitida", description: "No se puede desactivar al SuperAdministrador." });
+      return;
     }
     const { error } = await supabase.from('users_roles').update({ status: !currentStatus }).eq('user_id', userId);
-    if(error){
-       toast({ variant: "destructive", title: "Error", description: `Error al cambiar estado: ${error.message}` });
+    if (error) {
+      toast({ variant: "destructive", title: "Error", description: `Error al cambiar estado: ${error.message}` });
     } else {
-       toast({ title: "Éxito", description: "Estado del usuario actualizado." });
-       fetchUsers();
+      toast({ title: "Éxito", description: "Estado del usuario actualizado." });
+      fetchUsers();
     }
   }
 
@@ -115,10 +115,10 @@ const UsersModule = () => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: `${window.location.origin}/update-password`,
     });
-     if(error){
-       toast({ variant: "destructive", title: "Error", description: `Error al enviar correo: ${error.message}` });
+    if (error) {
+      toast({ variant: "destructive", title: "Error", description: `Error al enviar correo: ${error.message}` });
     } else {
-       toast({ title: "Éxito", description: `Enlace de reseteo de contraseña enviado a ${email}.` });
+      toast({ title: "Éxito", description: `Enlace de reseteo de contraseña enviado a ${email}.` });
     }
   }
 
@@ -142,30 +142,30 @@ const UsersModule = () => {
           <h1 className="text-3xl font-extrabold" style={{ color: 'var(--text-primary)' }}>Gestión de Usuarios</h1>
           <p className="text-md mt-1" style={{ color: 'var(--text-secondary)' }}>Crea, edita y gestiona los usuarios del sistema.</p>
         </div>
-        <Button onClick={handleAddNew} className="bg-blue-600 hover:bg-blue-700 text-white">
+        <Button onClick={handleAddNew} className="bg-brand-indigo hover:bg-brand-indigo/90 text-white shadow-md">
           <PlusCircle className="mr-2 h-4 w-4" /> Crear Usuario
         </Button>
       </div>
 
 
       <div className="flex flex-col sm:flex-row gap-3">
-                    <div className="relative flex-1 max-w-sm">
-            
-                      
-                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                      <Input
-                        placeholder="Buscar por nombre o referencia..."
-                      
-                        className="pl-10"
-                      />
-                    </div>
-                    <Button  variant="outline">
-                      
-                      Refrescar
-                    </Button>
-                  </div>
+        <div className="relative flex-1 max-w-sm">
 
-      
+
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Input
+            placeholder="Buscar por nombre o referencia..."
+
+            className="pl-10"
+          />
+        </div>
+        <Button variant="outline">
+
+          Refrescar
+        </Button>
+      </div>
+
+
 
       <div className="rounded-lg border" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border)' }}>
         <Table>
@@ -194,18 +194,18 @@ const UsersModule = () => {
                 </TableCell>
                 <TableCell>{new Date(user.created_at).toLocaleDateString()}</TableCell>
                 <TableCell className="text-right space-x-1">
-                   <Button variant="ghost" size="icon" onClick={() => handleEdit(user)} className="text-blue-500 hover:text-blue-600" title="Editar">
+                  <Button variant="ghost" size="icon" onClick={() => handleEdit(user)} className="text-brand-indigo hover:text-brand-indigo/80 hover:bg-brand-indigo/10" title="Editar">
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleResetPassword(user.email)} className="text-yellow-500 hover:text-yellow-600" title="Resetear contraseña">
+                  <Button variant="ghost" size="icon" onClick={() => handleResetPassword(user.email)} className="text-brand-orange hover:text-brand-orange/80 hover:bg-brand-orange/10" title="Resetear contraseña">
                     <KeyRound className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleDeactivate(user.id, user.role, user.status)} className="text-orange-500 hover:text-orange-600" title={user.status ? 'Desactivar' : 'Activar'}>
+                  <Button variant="ghost" size="icon" onClick={() => handleDeactivate(user.id, user.role, user.status)} className="text-brand-purple hover:text-brand-purple/80 hover:bg-brand-purple/10" title={user.status ? 'Desactivar' : 'Activar'}>
                     <PowerOff className="h-4 w-4" />
                   </Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="ghost" size="icon" className="text-red-500 hover:text-red-600" title="Eliminar"><Trash2 className="h-4 w-4" /></Button>
+                      <Button variant="ghost" size="icon" className="text-brand-red hover:text-brand-red/80 hover:bg-brand-red/10" title="Eliminar"><Trash2 className="h-4 w-4" /></Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
@@ -227,14 +227,14 @@ const UsersModule = () => {
         </Table>
       </div>
 
-       <UserFormDialog 
-          isOpen={isFormOpen} 
-          setIsOpen={setIsFormOpen}
-          editingUser={editingUser}
-          roles={ROLES}
-          onSuccess={fetchUsers}
-          currentUserRole={currentUserProfile.role}
-        />
+      <UserFormDialog
+        isOpen={isFormOpen}
+        setIsOpen={setIsFormOpen}
+        editingUser={editingUser}
+        roles={ROLES}
+        onSuccess={fetchUsers}
+        currentUserRole={currentUserProfile.role}
+      />
     </motion.div>
   );
 };

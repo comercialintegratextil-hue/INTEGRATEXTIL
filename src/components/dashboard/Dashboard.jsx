@@ -20,12 +20,12 @@ const Dashboard = () => {
       case 'SuperAdministrador':
         return (
           <Tabs defaultValue="management" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto">
-              <TabsTrigger value="management" className="flex items-center gap-2">
+            <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-muted/50 p-1 rounded-full">
+              <TabsTrigger value="management" className="rounded-full flex items-center gap-2 data-[state=active]:bg-brand-indigo data-[state=active]:text-white transition-all duration-300">
                 <Briefcase className="h-4 w-4" />
                 Gerencia
               </TabsTrigger>
-              <TabsTrigger value="production" className="flex items-center gap-2">
+              <TabsTrigger value="production" className="rounded-full flex items-center gap-2 data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300">
                 <Factory className="h-4 w-4" />
                 Producción
               </TabsTrigger>

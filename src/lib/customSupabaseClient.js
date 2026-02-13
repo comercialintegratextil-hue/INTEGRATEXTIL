@@ -1,6 +1,22 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://mscefsstpxxzdobxoors.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zY2Vmc3N0cHh4emRvYnhvb3JzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU1NTY1ODMsImV4cCI6MjA3MTEzMjU4M30.ZiEuBwiPmojGqJ7bbCG5yJ-BMI76xbe7HZ4_uZ-HuJ4';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Si no hay credenciales (modo local sin Supabase), usamos valores dummy
+// para evitar que createClient falle al iniciar.
+// El bypass en SupabaseAuthContext manejará la autenticación.
+const isLocalMode = !supabaseUrl || !supabaseAnonKey;
+
+const effectiveUrl = isLocalMode ? 'https://placeholder.supabase.co' : supabaseUrl;
+const effectiveKey = isLocalMode ? 'placeholder-key' : supabaseAnonKey;
+
+export const supabase = createClient(effectiveUrl, effectiveKey, {
+    auth: {
+        persistSession: !isLocalMode // No persistir sesión si estamos en modo local falso
+    }
+});
+
+if (isLocalMode) {
+    console.warn('⚠️ Supabase Client inicializado en MODO MOCK (Sin credenciales). Solo funcionará el acceso temporal local.');
+}

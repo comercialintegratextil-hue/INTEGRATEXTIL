@@ -9,12 +9,17 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: 'bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg transform hover:-translate-y-px',
+				default: 'bg-brand-indigo text-white hover:bg-brand-indigo/90 shadow-md hover:shadow-lg transform hover:-translate-y-px',
 				destructive: 'bg-red-500 text-white hover:bg-red-600 shadow-md hover:shadow-lg transform hover:-translate-y-px',
 				outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
 				secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
+				// New Brand Variants
+				orange: 'bg-brand-orange text-white hover:bg-brand-orange/90 shadow-md hover:shadow-lg transform hover:-translate-y-px',
+				green: 'bg-brand-green text-white hover:bg-brand-green/90 shadow-md hover:shadow-lg transform hover:-translate-y-px',
+				purple: 'bg-brand-purple text-white hover:bg-brand-purple/90 shadow-md hover:shadow-lg transform hover:-translate-y-px',
+				red: 'bg-brand-red text-white hover:bg-brand-red/90 shadow-md hover:shadow-lg transform hover:-translate-y-px',
 			},
 			size: {
 				default: 'h-11 px-6 py-2',

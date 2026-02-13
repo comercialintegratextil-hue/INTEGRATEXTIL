@@ -2,8 +2,9 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
+import IntegraTextilLogo from '@/components/ui/IntegraTextilLogo';
 
-const Sidebar = ({ 
+const Sidebar = ({
   sidebarOpen,
   modules,
   currentUser
@@ -32,27 +33,38 @@ const Sidebar = ({
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-center h-20 px-4 border-b" style={{ borderColor: 'var(--border)' }}>
-          <motion.div 
-            className="logo-container"
-            animate={{
-              width: sidebarOpen ? '75%' : '48px',
-              height: sidebarOpen ? 'auto' : '48px',
-              transition: { duration: 0.3 }
-            }}
-          >
-            <img 
-              src="https://horizons-cdn.hostinger.com/a54a38cd-63e0-4434-8f83-e0dc129c24f1/a050505d3ad792e3f08c7e4ce6cd7446.jpg" 
-              alt="IntegraTextil ERP Logo"
-              className="object-contain h-full w-full"
-            />
-          </motion.div>
+          <AnimatePresence mode="wait">
+            {sidebarOpen ? (
+              <motion.div
+                key="logo-full"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="w-full px-2"
+              >
+                <IntegraTextilLogo className="w-full h-auto" style={{ maxHeight: '50px' }} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="logo-icon"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 via-blue-500 to-blue-600 flex items-center justify-center shadow-lg"
+              >
+                <span className="text-white font-bold text-xl">IT</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-1.5 overflow-y-auto scrollbar-hide">
           {modules.map((module) => {
             const Icon = module.icon;
             const isActive = activeModule === module.id;
-            
+
             if (module.roles && !module.roles.includes(currentUser.role)) {
               return null;
             }
@@ -85,7 +97,7 @@ const Sidebar = ({
                       )}
                     </AnimatePresence>
                   </div>
-                  
+
                   <AnimatePresence>
                     {!isActive && (
                       <motion.div
@@ -105,21 +117,21 @@ const Sidebar = ({
           })}
         </nav>
         <div className="px-6 py-4 border-t" style={{ borderColor: 'var(--border)' }}>
-            <AnimatePresence>
-              {sidebarOpen && (
-                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-center text-xs"
-                    style={{ color: 'var(--text-secondary)'}}
-                 >
-                    <p>&copy; {new Date().getFullYear()} Integra Textil</p>
-                    <p>v1.2.0</p>
-                 </motion.div>
-              )}
-            </AnimatePresence>
+          <AnimatePresence>
+            {sidebarOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-center text-xs"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <p>&copy; {new Date().getFullYear()} Integra Textil</p>
+                <p>v1.2.0</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.aside>

@@ -6,9 +6,9 @@ import AttendanceView from './attendance/AttendanceView';
 import ProductivityView from './productivity/ProductivityView';
 
 const submodules = [
-  { name: 'Empleados', path: 'employees', icon: User, component: EmployeesView },
-  { name: 'Asistencia', path: 'attendance', icon: ClipboardList, component: AttendanceView },
-  { name: 'Productividad', path: 'productivity', icon: BarChart2, component: ProductivityView },
+  { name: 'Empleados', path: 'employees', icon: User, component: EmployeesView, activeClass: 'border-brand-indigo text-brand-indigo bg-brand-indigo/10' },
+  { name: 'Asistencia', path: 'attendance', icon: ClipboardList, component: AttendanceView, activeClass: 'border-brand-green text-brand-green bg-brand-green/10' },
+  { name: 'Productividad', path: 'productivity', icon: BarChart2, component: ProductivityView, activeClass: 'border-brand-orange text-brand-orange bg-brand-orange/10' },
 ];
 
 const PersonnelModule = () => {
@@ -19,7 +19,7 @@ const PersonnelModule = () => {
   if (!submodule || !activeSubmodule) {
     return <Navigate to={`/personnel/${submodules[0].path}`} replace />;
   }
-  
+
   const ActiveComponent = activeSubmodule.component;
 
   return (
@@ -37,10 +37,9 @@ const PersonnelModule = () => {
               to={`/personnel/${mod.path}`}
               className={({ isActive }) =>
                 `flex items-center px-4 py-3 border-b-2 text-sm font-medium transition-colors duration-200 ease-in-out
-                ${
-                  isActive
-                    ? 'border-accent-purple text-accent-purple'
-                    : 'border-transparent text-muted-foreground hover:text-primary hover:border-gray-300'
+                ${isActive
+                  ? mod.activeClass
+                  : 'border-transparent text-muted-foreground hover:text-primary hover:border-gray-300'
                 }`
               }
             >

@@ -23,12 +23,12 @@ const ProgrammingModule = () => {
       </div>
 
       <Tabs defaultValue="gantt" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="gantt"><GanttChartSquare className="w-4 h-4 mr-2" />Diagrama de Gantt</TabsTrigger>
-          <TabsTrigger value="processes"><Factory className="w-4 h-4 mr-2" />Procesos</TabsTrigger>
-          <TabsTrigger value="shifts"><Clock className="w-4 h-4 mr-2" />Turnos</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3 bg-muted/50 p-1 rounded-full">
+          <TabsTrigger value="gantt" className="rounded-full data-[state=active]:bg-brand-green data-[state=active]:text-white transition-all duration-300"><GanttChartSquare className="w-4 h-4 mr-2" />Diagrama de Gantt</TabsTrigger>
+          <TabsTrigger value="processes" className="rounded-full data-[state=active]:bg-brand-indigo data-[state=active]:text-white transition-all duration-300"><Factory className="w-4 h-4 mr-2" />Procesos</TabsTrigger>
+          <TabsTrigger value="shifts" className="rounded-full data-[state=active]:bg-brand-orange data-[state=active]:text-white transition-all duration-300"><Clock className="w-4 h-4 mr-2" />Turnos</TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="gantt">
           <GanttChart />
         </TabsContent>
@@ -36,7 +36,7 @@ const ProgrammingModule = () => {
         <TabsContent value="processes">
           <ProcessesStations />
         </TabsContent>
-        
+
         <TabsContent value="shifts">
           <WorkShifts />
         </TabsContent>

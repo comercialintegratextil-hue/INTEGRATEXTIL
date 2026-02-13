@@ -6,25 +6,40 @@
 
 :root {
   /* Light theme colors */
-  --bg-primary: #E0E0E0; /* Changed to light grey */
-  --bg-secondary:#FFFFFF;
+  --bg-primary: #E0E0E0;
+  /* Changed to light grey */
+  --bg-secondary: #FFFFFF;
   --bg-sidebar: #FFFFFF;
   --bg-tertiary: #F3F4F6;
-  --text-primary: #212121; /* Changed to dark grey */
+  --text-primary: #212121;
+  /* Changed to dark grey */
   --text-secondary: #4B5563;
   --text-muted: #3c3c3d;
   --border: #E5E7EB;
   --border-accent: #D1D5DB;
-  
-  --accent-blue: #64B5F6;   /* pastel blue */
-  --accent-orange: #FFB74D; /* pastel orange */
-  --accent-purple: #d8b4fe; /* purple-300 */
-  --accent-green: #81C784;  /* pastel green */
-  --accent-yellow: #fde047; /* yellow-300 */
+
+  --accent-blue: #64B5F6;
+  /* pastel blue */
+  --accent-orange: #FFB74D;
+  /* pastel orange */
+  --accent-purple: #d8b4fe;
+  /* purple-300 */
+  --accent-green: #81C784;
+  /* pastel green */
+  --accent-yellow: #fde047;
+  /* yellow-300 */
+
+  /* New Modern Brand Colors */
+  --brand-orange: #FF9F43;
+  --brand-green: #2ECC71;
+  --brand-purple: #9B59B6;
+  --brand-red: #FF6B6B;
+  --brand-indigo: #5f27cd;
+  /* Deep Elegant Purple/Blue */
 
   --shadow-color: 220 20% 90%;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -4px rgba(0,0,0,0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 
   --accent-blue-light: #e0f2fe;
   --accent-green-light: #dcfce7;
@@ -46,8 +61,10 @@
 
 [data-theme="dark"] {
   /* Dark theme colors */
-  --bg-primary: #042863;
-  --bg-secondary: #021d49;
+  --bg-primary: #020b1c;
+  /* Darker Deep Blue Background */
+  --bg-secondary: #0b2149;
+  /* Lighter Luminous Blue Card */
   --bg-sidebar: #000b1b;
   --bg-tertiary: #1E3A8A;
   --text-primary: #F9FAFB;
@@ -62,10 +79,17 @@
   --accent-green: #4ADE80;
   --accent-yellow: #FACC15;
 
+  /* New Modern Brand Colors (Dark Mode) */
+  --brand-orange: #e67e22;
+  --brand-green: #27ae60;
+  --brand-purple: #8e44ad;
+  --brand-red: #ee5253;
+  --brand-indigo: #4834d4;
+
   --shadow-color: 220 40% 5%;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.4);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.4);
-  
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+
   --accent-blue-light: rgba(96, 165, 250, 0.1);
   --accent-green-light: rgba(74, 222, 128, 0.1);
   --accent-purple-light: rgba(196, 181, 253, 0.1);
@@ -118,6 +142,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -125,6 +150,7 @@ body {
 .chart-gradient {
   fill: url(#chartGradient);
 }
+
 [data-theme="dark"] .chart-gradient {
   fill: url(#chartGradientDark);
 }
@@ -153,16 +179,19 @@ body {
 .gantt-task-bar {
   border: 1px solid;
 }
+
 .gantt-task-pending {
   background-image: linear-gradient(to right, var(--gantt-task-pending-bg), var(--gantt-task-pending-border));
   border-color: var(--gantt-task-pending-border);
   color: var(--gantt-task-pending-text);
 }
+
 .gantt-task-in-process {
   background-image: linear-gradient(to right, var(--gantt-task-in-process-bg), var(--gantt-task-in-process-border));
   border-color: var(--gantt-task-in-process-border);
   color: var(--gantt-task-in-process-text);
 }
+
 .gantt-task-finished {
   background-image: linear-gradient(to right, var(--gantt-task-finished-bg), var(--gantt-task-finished-border));
   border-color: var(--gantt-task-finished-border);
@@ -172,9 +201,11 @@ body {
 .gantt-table-row {
   border-color: var(--border);
 }
+
 .gantt-table-row:nth-child(even) {
   background-color: var(--bg-tertiary);
 }
+
 .gantt-table-row:hover {
   background-color: var(--accent-blue-light);
 }
@@ -183,6 +214,7 @@ body {
   border-color: var(--border-accent);
   background-color: var(--bg-secondary);
 }
+
 [data-theme="dark"] .gantt-header-cell {
   background-color: var(--bg-tertiary);
 }
@@ -191,6 +223,7 @@ body {
   background-color: var(--accent-blue-light);
   color: var(--accent-blue);
 }
+
 [data-theme="dark"] .gantt-header-today {
   background-color: var(--accent-blue);
   color: white;
